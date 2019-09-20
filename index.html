@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X las makinas</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="contenedor">
+      <nav class="menu">
+        <a href="/" class="menu__link">Home</a>
+        <a href="/about.html" class="menu__link">Explicación del código</a>
+        <a href="/poem.html" class="menu__link"
+          >Primer poema generado con el código</a
+        >
+      </nav>
+      <header>
+        <h1>Hola, ¡Bienvenidx!</h1>
+      </header>
+      <p aria-label="about" id="about" tabindex="0">
+        Este sitio es el resultado de un experimento que se dio el día
+        <b>18-09-2019</b> por la mañana en el
+        <a
+          href="https://www.instagram.com/laboratoriouno/"
+          rel="noopener noreferrer"
+          target="_blank"
+          >Laboratorio 1</a
+        >
+        de
+        <a
+          href="http://arteselectronicas.untref.edu.ar/home"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Artes Electrónicas</a
+        >
+        en
+        <a
+          href="https://www.untref.edu.ar/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          UNTREF</a
+        >.
+      </p>
+      <p>
+        El objetivo de este sitio es transformar textos a partir de un algoritmo
+        y azar.
+      </p>
+      <p id="explicacion">
+        Para usar este sitio, tenés que introducir tu texto en el siguiente
+        campo. Después, en base a la cantidad de palabras que tiene vas a poder
+        elegir el nivel de azar para afectarlo. Podes apretar las teclas
+        <kbd class="keyboard-shortcut" aria-label="control and enter"
+          >ctrl + Enter</kbd
+        >
+        en el campo de texto o tocar el botón para correr el algoritmo (si tenés
+        un nivel de azar seleccionado). El algoritmo va a separar tu texto en
+        palabras (si separar por líneas está seleccionado, separa también por
+        saltos de línea) y va a recorrerlo tomando de a grupos a partir de
+        valores al azar que varían entre 1 y el nivel de azar elegido. Por
+        último, vas a ver en el otro campo de texto lo que se haya generado. Si
+        no te gusta, simplemente dale de nuevo al botón para generar un texto
+        completamente nuevo.
+      </p>
+      <textarea
+        aria-label="Introduccion de texto"
+        aria-placeholder="Acá va tu texto"
+        name="texto"
+        class="texto"
+        id="texto"
+        placeholder="Acá va tu texto"
+      ></textarea>
+      <div class="contenedor__controles">
+        <input
+          class="contenedor__controles__azar"
+          id="azar"
+          min="1"
+          placeholder="Azar"
+          required
+          type="number"
+        />
+        <button
+          aria-label="Romper texto"
+          aria-describedby="explicacion"
+          class="contenedor__controles__boton"
+          disabled
+          id="boton"
+        >
+          Romper texto
+        </button>
+        <div class="contenedor__controles__separacion">
+          <label
+            for="separacion"
+            class="contenedor__controles__separacion--label"
+            >Separar por líneas</label
+          >
+          <input
+            id="separacion"
+            class="contenedor__controles__separacion--checkbox"
+            name="separacion"
+            type="checkbox"
+            checked
+          />
+        </div>
+      </div>
+      <textarea
+        aria-label="Texto generado"
+        aria-placeholder="Acá va el texto generado"
+        class="texto texto--texto-generado"
+        disabled
+        id="resultado"
+        name="resultado"
+        placeholder="Acá va el texto generado"
+      ></textarea>
+      <footer>
+        Sitio hecho con amor por
+        <a href="github.com/royede" rel="noopener noreferrer" target="_blank"
+          >Roy Eden</a.
+        >
+      </footer>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+body {
+  box-sizing: border-box;
+  font-family: 'Roboto Slab', monospace;
+  display: flex;
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+}
+
+footer {
+  border-top: solid 2px #bbbbbb;
+  padding: 2% 0;
+}
+
+.keyboard-shortcut {
+  background-color: #000;
+  border-radius: 3px;
+  color: #fff;
+  padding: 1px 5px;
+}
+
+.contenedor {
+  flex: 1;
+  padding: 1% 5%;
+  width: 90%;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.poema {
+  overflow-wrap: break-word;
+}

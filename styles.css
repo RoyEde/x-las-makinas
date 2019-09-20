@@ -1,0 +1,77 @@
+.texto {
+  border: solid 2px #e0e0e0;
+  background: #fff;
+  box-shadow: 0 0 1px #00000044;
+  font-size: 1.2rem;
+  min-height: 30%;
+  padding: 0.5rem;
+  resize: none;
+  width: 95%;
+}
+
+.contenedor__controles {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.contenedor__controles__azar {
+  cursor: pointer;
+  flex: 1;
+  max-width: 40%;
+}
+
+.contenedor__controles__boton {
+  flex: 1;
+  transition: color 0.4s ease-in-out;
+}
+
+.contenedor__controles__separacion {
+  align-items: center;
+  flex: 1;
+  display: flex;
+}
+
+.contenedor__controles__azar,
+.contenedor__controles__boton,
+.contenedor__controles__separacion {
+  appearance: none;
+  background-color: #fff;
+  border: solid 2px #e0e0e0;
+  font-family: inherit;
+  font-size: 1.2rem;
+  padding: 2% 3%;
+  white-space: nowrap;
+}
+
+.contenedor__controles__separacion--checkbox {
+  cursor: pointer;
+}
+
+.contenedor__controles__separacion--label {
+  cursor: inherit;
+  height: 100%;
+  width: 100%;
+}
+
+@media (pointer: fine) {
+  .texto {
+    resize: vertical;
+  }
+
+  .contenedor__controles__boton,
+  .contenedor__controles__separacion {
+    transition: background-color 0.4s ease-in-out, border 0.4s ease-in-out,
+      color 0.4s ease-in-out;
+  }
+
+  .contenedor__controles__boton:not([disabled]):hover,
+  .contenedor__controles__boton:focus,
+  .contenedor__controles__separacion:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+    border: solid 2px #00000066;
+  }
+}

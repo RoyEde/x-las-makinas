@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>X las makinas - Como funciona</title>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/atom-one-dark.min.css"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="styles.about.css" />
+  </head>
+  <body>
+    <main class="contenedor">
+      <nav class="menu">
+        <a href="/" class="menu__link">Home</a>
+        <a href="/about.html" class="menu__link">Explicación del código</a>
+        <a href="/poem.html" class="menu__link"
+          >Primer poema generado con el código</a
+        >
+      </nav>
+      <header><h1>¿Porqué?</h1></header>
+      <p>
+        Éste código fue diseñado y desarrollado en un lapso de 20 minutos en una
+        clase sobre la intervención artística de noticias, videos y grabaciones.
+        Nosotrxs intervenimos nuestros apuntes que estaban en un documento de
+        google docs.
+      </p>
+      <p>
+        Este sitio utiliza un algoritmo diferente al primer algoritmo planteado
+        (hacen lo mismo, pero el nuevo es más rápido y más legible).
+      </p>
+      <p>Todo el código fue planteado desde el primer momento con JS</p>
+      <section>
+        <header>
+          <h1>El primer código</h1>
+        </header>
+        <article>
+          <p>
+            El primer código fue escrito en una consola de chrome, a pura prueba
+            y error.
+          </p>
+          <p>Características del primer código:</p>
+          <ul>
+            <li>Hecho a las apuradas ✔</li>
+            <li>Hecho sin dormir ✔</li>
+            <li>
+              Hecho en una consola del navegador y no en un editor de código ✔
+            </li>
+            <li>Hecho para funcionar y no para ser óptimo ✔</li>
+            <li>Hecho con un sólo propósito ✔</li>
+            <li>No muy legible ✔</li>
+          </ul>
+        </article>
+      </section>
+      <pre>
+        <code class="javascript">
+// Nivel de azar (Fijo)
+const azar = 9;
+
+// Rompe el texto en palabras (separa exclusivamente por espacios)
+const romperTexto = texto => texto.split(' ');
+
+// Genera arrays dentro de arrays que tienen la cantidad de palabras por separado
+// 0 óptima esta aproximación por la cantidad de data generada que después se descarta
+// No está aplicando mucha lógica
+const textosPorCantidad = (palabras, cantidad) => {
+  let posicion = -1;
+  const textos = [];
+  palabras.map((palabra, indice) => {
+    if (!(indice % cantidad)) {
+      posicion += 1;
+      textos.push([]);
+    }
+    textos[posicion].push(palabra);
+  })
+  return textos;
+};
+
+// Itera (recorre uno por uno) por los números generados al azar.
+// En cada iteración, toma TODAS las palabras y las separa todas con la lógica de arriba.
+// Toma al final 1 solo grupo de palabras y descarta el resto
+const textoAlAzar = (texto, numeritos) => {
+  const palabras = [];
+  numeritos.forEach((numerito, indice) => palabras.push(textosPorCantidad(texto, numerito)[indice]));
+  return palabras;
+};
+
+// Pequeño hack para armar arrays vacíos y llenarlos de valores al azar (los numeritos que le baja a la otra función)
+const armarTextoAlAzar = textoRoto => textoAlAzar(textoRoto, [...Array(textoRoto.length)].map(() => Math.round(Math.random() * azar + 1))).map(palabras => !!palabras && palabras.join(' ')).filter(texto => !!texto).join('\n');
+        </code>
+      </pre>
+      <section>
+        <header>
+          <h1>El nuevo código</h1>
+        </header>
+        <article>
+          <p>
+            Reproducción completa de la lógica del original, pero optimizado
+            para funcionar más rápido y mejor, con lógica configurable y para
+            ser usado en un sitio web.
+          </p>
+          <p>Características del nuevo código:</p>
+          <ul>
+            <li>Dormir antes de hacer ✔</li>
+            <li>Buscar legibilidad ✔</li>
+            <li>
+              Hecho en un editor de código ✔
+            </li>
+            <li>Hecho para funcionar y para ser óptimo ✔</li>
+            <li>Comentado ✔</li>
+          </ul>
+        </article>
+      </section>
+      <p><b>* Incluye también la lógica para su interacción con el sitio</b></p>
+      <pre>
+        <code class="javascript">
+// Variables
+let azar;
+let separacion = true;
+
+// Elemento que almacena el texto original
+const nodoTexto = document.getElementById('texto');
+
+// Elemento que almacena el resultado
+const nodoResultado = document.getElementById('resultado');
+
+/// Boton
+const nodoBoton = document.getElementById('boton');
+
+/// Azar
+const nodoAzar = document.getElementById('azar');
+
+// Separacion
+const nodoSeparacion = document.getElementById('separacion');
+
+// Cambia el método de separación según el valor de selección del checkbox
+nodoSeparacion.addEventListener(
+  'change',
+  event => (separacion = event.target.checked ? /\s/ : ' ')
+);
+
+// Separa el texto
+const romperTexto = texto => texto.split(separacion);
+
+// Toma una cantidad fija de palabras desde una posición específica.
+const palabrasPorCantidad = (palabras, indice, cantidad) =>
+  palabras.slice(indice * cantidad, (indice + 1) * cantidad).join(' ');
+
+const generarTextoAlAzar = () => {
+  // Si el valor de azar está seteado, entonces se puede operar con el texto.
+  if (azar) {
+    const texto = nodoTexto.value;
+    // Romper el texto en palabras según la lógica de separación elegida.
+    const textoRoto = romperTexto(texto);
+    // Iterar por todas las palabras
+    const textoAlAzar = textoRoto
+      .map((_, indice) =>
+        palabrasPorCantidad(
+          textoRoto,
+          indice,
+          // Genera un número al azar entre 1 y el valor de azar
+          Math.floor(Math.random() * azar + 1)
+        )
+      )
+      .join('\n');
+    nodoResultado.textContent = textoAlAzar;
+  }
+};
+        </code>
+      </pre>
+      <p>La nueva lógica (por separado):</p>
+      <pre>
+        <code class="javascript">
+// Variables
+let azar;
+let separacion = true;
+
+// Separa el texto
+const romperTexto = texto => texto.split(separacion);
+
+// Toma una cantidad fija de palabras desde una posición específica.
+const palabrasPorCantidad = (palabras, indice, cantidad) =>
+  palabras.slice(indice * cantidad, (indice + 1) * cantidad).join(' ');
+
+const generarTextoAlAzar = () => {
+  // Si el valor de azar está seteado, entonces se puede operar con el texto.
+  if (azar) {
+    const texto = nodoTexto.value;
+    // Romper el texto en palabras según la lógica de separación elegida.
+    const textoRoto = romperTexto(texto);
+    // Iterar por todas las palabras
+    const textoAlAzar = textoRoto
+      .map((_, indice) =>
+        palabrasPorCantidad(
+          textoRoto,
+          indice,
+          // Genera un número al azar entre 1 y el valor de azar
+          Math.floor(Math.random() * azar + 1)
+        )
+      )
+      .join('\n');
+    return textoAlAzar;
+  }
+};
+        </code>
+      </pre>
+
+      <script>
+        hljs.initHighlightingOnLoad();
+      </script>
+    </main>
+  </body>
+</html>
