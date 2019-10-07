@@ -120,7 +120,7 @@ const armarTextoAlAzar = textoRoto => textoAlAzar(textoRoto, [...Array(textoRoto
         <code class="javascript">
 // Variables
 let azar;
-let separacion = true;
+let separacion = /\s/;
 
 // Elemento que almacena el texto original
 const nodoTexto = document.getElementById('texto');
@@ -177,7 +177,7 @@ const generarTextoAlAzar = () => {
         <code class="javascript">
 // Variables
 let azar;
-let separacion = true;
+let separacion = /\s/;
 
 // Separa el texto
 const romperTexto = texto => texto.split(separacion);
