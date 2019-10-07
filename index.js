@@ -1,6 +1,6 @@
 // Variables
 let azar;
-let separacion = true;
+let separacion = /\s/;
 
 // Elemento que almacena el texto original
 const nodoTexto = document.getElementById('texto');
@@ -26,8 +26,10 @@ nodoSeparacion.addEventListener(
 const romperTexto = texto => texto.split(separacion);
 
 // Toma una cantidad fija de palabras desde una posición específica.
-const palabrasPorCantidad = (palabras, indice, cantidad) =>
-  palabras.slice(indice * cantidad, (indice + 1) * cantidad).join(' ');
+const palabrasPorCantidad = (palabras, indice, cantidad) => {
+  const palabrasNuevas = palabras.slice(indice * cantidad, (indice + 1) * cantidad).join(' ')
+  return palabrasNuevas;
+}
 
 const generarTextoAlAzar = () => {
   // Si el valor de azar está seteado, entonces se puede operar con el texto.
@@ -45,6 +47,7 @@ const generarTextoAlAzar = () => {
           Math.floor(Math.random() * azar + 1)
         )
       )
+      .filter(palabra => !!palabra)
       .join('\n');
     nodoResultado.textContent = textoAlAzar;
   }
